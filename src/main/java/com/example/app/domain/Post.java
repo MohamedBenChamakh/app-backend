@@ -18,6 +18,8 @@ public class Post {
     private String title;
     private String content;
     private Date createdAt;
+    @OneToOne
+    private PostType type;
 
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
@@ -63,5 +65,13 @@ public class Post {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public PostType getType() {
+        return type;
+    }
+
+    public void setType(PostType type) {
+        this.type = type;
     }
 }
