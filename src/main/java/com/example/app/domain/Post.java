@@ -22,8 +22,8 @@ public class Post {
     private PostType type;
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
-
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Post() {
@@ -75,5 +75,13 @@ public class Post {
 
     public void setType(PostType type) {
         this.type = type;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

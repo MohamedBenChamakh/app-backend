@@ -28,7 +28,7 @@ public class User {
     private String phoneNumber;
 
     private String email;
-
+    @Enumerated(EnumType.ORDINAL)
     private Region region;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
@@ -128,4 +128,5 @@ public class User {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
 }

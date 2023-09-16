@@ -2,9 +2,11 @@ package com.example.app.mapper;
 
 import com.example.app.domain.Comment;
 import com.example.app.domain.Post;
+import com.example.app.domain.User;
 import com.utils.openapi.model.CommentResponseBody;
 import com.utils.openapi.model.PostRequestBody;
 import com.utils.openapi.model.PostResponseBody;
+import com.utils.openapi.model.PublisherResponseBody;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -20,7 +22,10 @@ public abstract class PostMapper {
 
     @Mapping(target = "createdAt", dateFormat = "dd/MM/yyyy")
     @Mapping(target = "type", source = "type.name")
+    @Mapping(target = "publisher", source = "user")
     abstract PostResponseBody postToPostResponseBody(Post post);
+
+    abstract PublisherResponseBody userToPublisherResponseBody(User user);
 
 
     public abstract List<PostResponseBody> postListToPostListResponseBody(List<Post> postList);
@@ -30,6 +35,7 @@ public abstract class PostMapper {
     abstract CommentResponseBody commentToCommentResponseBody(Comment comment);
 
     @Mapping(source = "createdAt", target = "createdAt", qualifiedByName = "setCreatedPostDate", dateFormat = "yyyy-MM-dd")
+    @Mapping(source = "publisherId", target = "user.id")
     public abstract Post postRequestBodyToPost(PostRequestBody postRequestBody);
 
     @Named(value = "setCreatedPostDate")
