@@ -20,9 +20,11 @@ public class Post {
     private Date createdAt;
     @OneToOne
     private PostType type;
-
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
+
+    @ManyToOne
+    private User user;
 
     public Post() {
     }
