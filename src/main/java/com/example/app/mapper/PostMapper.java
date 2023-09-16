@@ -21,7 +21,6 @@ public abstract class PostMapper {
     public static final PostMapper INSTANCE = Mappers.getMapper(PostMapper.class);
 
     @Mapping(target = "createdAt", dateFormat = "dd/MM/yyyy")
-    @Mapping(target = "type", source = "type.name")
     @Mapping(target = "publisher", source = "user")
     abstract PostResponseBody postToPostResponseBody(Post post);
 

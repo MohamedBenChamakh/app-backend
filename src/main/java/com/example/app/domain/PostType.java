@@ -16,6 +16,7 @@ public class PostType {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
     private String name;
+    private String iconUrl;
 
     public PostType() {
     }
@@ -34,5 +35,14 @@ public class PostType {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 }

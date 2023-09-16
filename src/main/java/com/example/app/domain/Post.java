@@ -20,7 +20,7 @@ public class Post {
     private Date createdAt;
     @OneToOne
     private PostType type;
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
     @ManyToOne
     @JoinColumn(name = "user_id")

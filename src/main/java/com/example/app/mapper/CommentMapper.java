@@ -1,6 +1,7 @@
 package com.example.app.mapper;
 
 import com.example.app.domain.Comment;
+import com.utils.openapi.model.CommentRequestBody;
 import com.utils.openapi.model.CommentResponseBody;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,6 +15,6 @@ public interface CommentMapper {
     @Mapping(target = "createdAt",dateFormat = "dd/MM/yyyy")
     CommentResponseBody commentToCommentResponseBody(Comment comment);
 
-
-
+    @Mapping(source = "postId",target = "post.id")
+    Comment commentRequestBodyToComment(CommentRequestBody commentRequestBody);
 }
