@@ -2,6 +2,7 @@ package com.example.app.controller;
 
 import com.example.app.service.UserService;
 import com.utils.openapi.api.UserClientApi;
+import com.utils.openapi.model.UserRequestBody;
 import com.utils.openapi.model.UserResponseBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,5 +24,11 @@ public class UserClientApiImpl implements UserClientApi {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok().body(userResponseBody);
+    }
+
+    @Override
+    public ResponseEntity<Void> updateUser(UserRequestBody userRequestBody) {
+        userService.updateUser(userRequestBody);
+        return ResponseEntity.badRequest().build();
     }
 }

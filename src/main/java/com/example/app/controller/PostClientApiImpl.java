@@ -5,6 +5,7 @@ import com.example.app.service.PostService;
 import com.utils.openapi.api.PostClientApi;
 import com.utils.openapi.model.PostRequestBody;
 import com.utils.openapi.model.PostResponseBody;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,9 +26,10 @@ public class PostClientApiImpl implements PostClientApi {
     }
 
     @Override
-    public ResponseEntity<Void> createPost(PostRequestBody postRequestBody) {
-        if (postService.createPost(postRequestBody))
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.badRequest().build();
+    public ResponseEntity<PostResponseBody> createPost(PostRequestBody postRequestBody) {
+        PostResponseBody postResponseBody = postService.createPost(postRequestBody);
+        if (postResponseBody == null)
+            return ResponseEntity.badRequest().build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(postResponseBody);
     }
 }

@@ -22,7 +22,7 @@ public abstract class PostMapper {
 
     @Mapping(target = "createdAt", dateFormat = "dd/MM/yyyy")
     @Mapping(target = "publisher", source = "user")
-    abstract PostResponseBody postToPostResponseBody(Post post);
+    public abstract PostResponseBody postToPostResponseBody(Post post);
 
     abstract PublisherResponseBody userToPublisherResponseBody(User user);
 

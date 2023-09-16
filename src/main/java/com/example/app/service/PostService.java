@@ -10,5 +10,5 @@ public interface PostService {
     List<PostResponseBody> getAllPosts(int page);
 
 
-    boolean createPost(PostRequestBody postRequestBody);
+    PostResponseBody createPost(PostRequestBody postRequestBody);
 }
