@@ -7,13 +7,12 @@ import com.utils.openapi.model.PostResponseBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class PostClientApiImpl implements PostClientApi {
 
-    private PostService postService;
+    private final PostService postService;
 
     public PostClientApiImpl(PostService postService) {
         this.postService = postService;
